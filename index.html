@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hecker Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            color: green;
+            border: 2px solid black;
+
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .hack {
+             
+            width: 50%;
+            transform: translateX(34%);
+        }
+        @media  (max-width:566px) {
+            
+            .hack{
+                width: 87%;
+                transform: translateX(-7%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="hack">
+            <!-- <span class="blinker"></span> -->
+            
+            
+             
+        </div>
+    </div>
+    <script>
+       
+        let hack = document.getElementsByClassName('hack')[0]
+        // console.log(blinker);
+        let count = 0;
+        setInterval(() => {
+            let blinker = document.getElementsByClassName('blinker')  // here i have kept this line here because when declared on top blinker will be not defined as there is no element with class as blinker as i am dynamically creating the element then adding class , but here it will include the blinker again and again so it will eventually get the element with class when it will be dynamically created 
+            // console.log(blinker);
+            // console.log(blinker[0] );
+            
+           
+            // here blinker is html collection ,but we need to apply js to all so making array and then iterating over array 
+            let arrayOfBlinker=   Array.from(blinker)
+          arrayOfBlinker.forEach(blinker=>{
+          
+            
+              
+              blinker.textContent += "."
+            //   console.log( count );
+              if (blinker.textContent == '....') {
+                  
+                  blinker.textContent = '';
+                  count = -1;
+                }
+                count += 1;
+            })
+        }, 100)
+
+        let randomDelay = async (text) => {
+         return new Promise(res=>{
+            setTimeout(() => {
+                let heading_of_hack_box = document.createElement('span')
+                let span_for_blinker = document.createElement('span')
+                span_for_blinker.className='blinker'
+                // heading_of_hack_box
+                heading_of_hack_box.innerHTML = text;
+   
+
+                // console.log('new');
+                
+                hack.appendChild(heading_of_hack_box)
+                hack.appendChild(span_for_blinker)
+                let breakLine = document.createElement('br')
+                hack.appendChild(breakLine)
+                res (text);
+
+            }, 1000 + Math.random() * 2000);
+         })   
+        }
+
+        async function hackerCore() {
+            console.log('djkf');
+            
+            let hacking_line,text;
+            text = 'Initializing Hacking'
+            await randomDelay(text)
+
+            text = 'Reading your Files'
+
+            await randomDelay(text)
+            text = 'Password of Files Detected'
+
+            await randomDelay(text)
+            text = 'Sending all Files and Password to Server'
+
+            await randomDelay(text)
+            text = 'Cleaning Up'
+
+            await randomDelay(text)
+      
+            
+           
+
+           
+
+        }
+        hackerCore()
+
+//         let p = new Promise((res, rej) => {
+//             // let ans = randomDelay("hwlow world");
+//             // console.log('below is executed');
+            
+//             // res(ans)
+// let text ="hwlow world"
+//             setTimeout(() => {
+//                 text += ' generated '
+//                 res( text);
+
+//             }, 1000 + Math.random() * 6000);
+//         })
+//         console.log('fucn');
+//         p.then(val => {
+//             console.log(val);
+
+//         })
+    </script>
+</body>
+
+</html>
